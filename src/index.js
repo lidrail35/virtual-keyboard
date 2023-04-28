@@ -30,11 +30,18 @@ class Keyboard {
     langOne.className = 'lang-one';
     langTwo.className = 'lang-two';
 
-    langOne.textContent = btn.en;
-    langTwo.textContent = btn.ru;
+    langOne.textContent = btn.en.toUpperCase();
+    langTwo.textContent = btn.ru.toUpperCase();
 
     button.append(langOne);
     button.append(langTwo);
+
+    button.addEventListener('mousedown', (e) => {
+      e.target.closest('.key').classList.toggle('press', true);
+    });
+    button.addEventListener('mouseup', (e) => {
+      e.target.closest('.key').classList.toggle('press', false);
+    });
 
     return button;
   }
