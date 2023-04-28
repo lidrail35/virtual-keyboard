@@ -1,4 +1,5 @@
 import './index.html';
+import './style.css';
 
 const { body } = document;
 

@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.work-space {
+  margin: 25px auto 0;
+  width: 75%;
+}
+
+.textarea {
+  width: 100%;
+  height: 200px;
+  resize: none;
+  border: 2px double gray;
+}
+
+.keyboard {
+  width: 100%;
+  height: 250px;
+  border: 2px double gray;
+}
