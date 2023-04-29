@@ -23,6 +23,13 @@ class Keyboard {
     return this.viewField;
   }
 
+  writeSymbolToViewField(keyButton) {
+    const pressedKey = keyData.filter((x) => x.key === keyButton);
+    const charToOut = pressedKey[0][this.lang];
+    // keyData[0]
+    this.viewField.textContent += charToOut;
+  }
+
   createButton(btn) {
     const button = document.createElement('div');
     const langOne = document.createElement('span');
@@ -40,7 +47,8 @@ class Keyboard {
 
     button.addEventListener('mousedown', (e) => {
       e.target.closest('.key').classList.toggle('press', true);
-      this.viewField.textContent += btn.en;
+      this.writeSymbolToViewField(btn.key);
+      // this.viewField.textContent += btn.en;
     });
     button.addEventListener('mouseup', (e) => {
       e.target.closest('.key').classList.toggle('press', false);
@@ -76,8 +84,8 @@ class Keyboard {
     document.addEventListener('keydown', (e) => {
       console.log(`down ${e.key}, ${e.code} ${e.getModifierState}`);
       const pressedKey = keyData.filter((x) => x.key === e.code.toString());
-      console.log(pressedKey);
       if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', true);
+      this.writeSymbolToViewField(e.code);
     });
     document.addEventListener('keyup', (e) => {
       console.log(`up  ${e.key}, ${e.code}`);
