@@ -8,11 +8,11 @@ class Keyboard {
   constructor(width, height) {
     this.width = width || 75;
     this.height = height || 25 * 5;
-    this.viewField = this.createViewField();
-    this.keyBoard = this.createKeyBoard();
-    this.workSpace = null;
     this.lang = 'en';
     this.keyLines = [];
+    this.workSpace = null;
+    this.viewField = this.createViewField();
+    this.keyBoard = this.createKeyBoard();
     this.addListener();
   }
 
