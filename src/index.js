@@ -10,6 +10,11 @@ class Keyboard {
     this.height = height || 25 * 5;
     this.lang = 'en';
     this.keyLines = [];
+    this.shift = false;
+    this.shiftLeft = false;
+    this.altLeft = false;
+    this.crtl = false;
+    this.alt = false;
     this.workSpace = null;
     this.viewField = this.createViewField();
     this.keyBoard = this.createKeyBoard();
@@ -24,8 +29,14 @@ class Keyboard {
   }
 
   writeSymbolToViewField(keyButton) {
+    if (this.altLeft && this.shiftLeft) {
+      this.lang = (this.lang === 'en') ? 'ru' : 'en';
+    }
+    // if this.altKey && this.shiftKey
+    if (keyButton.includes('Left') || keyButton.includes('Right')) return;
     const pressedKey = keyData.filter((x) => x.key === keyButton);
-    const charToOut = pressedKey[0][this.lang];
+    const charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
+      : pressedKey[0][this.lang];
     // keyData[0]
     this.viewField.textContent += charToOut;
   }
@@ -82,15 +93,25 @@ class Keyboard {
 
   addListener() {
     document.addEventListener('keydown', (e) => {
-      console.log(`down ${e.key}, ${e.code} ${e.getModifierState}`);
+      console.log(`down ${e.key}, ${e.code}, ${e.shiftKey}`);
       const pressedKey = keyData.filter((x) => x.key === e.code.toString());
       if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', true);
+      this.shift = e.shiftKey;
+      this.alt = e.altKey;
+      this.crtl = e.ctrlKey;
+      if (e.code === 'ShiftLeft') this.shiftLeft = true;
+      if (e.code === 'AltLeft') this.altLeft = true;
       this.writeSymbolToViewField(e.code);
     });
     document.addEventListener('keyup', (e) => {
       console.log(`up  ${e.key}, ${e.code}`);
       const pressedKey = keyData.filter((x) => x.key === e.code.toString());
       if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', false);
+      this.shift = e.shiftKey;
+      this.alt = e.altKey;
+      this.crtl = e.ctrlKey;
+      if (e.code === 'ShiftLeft') this.shiftLeft = false;
+      if (e.code === 'AltLeft') this.altLeft = false;
     });
   }
 
