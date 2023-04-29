@@ -54,7 +54,7 @@ class Keyboard {
     const langOne = document.createElement('span');
     const langTwo = document.createElement('span');
 
-    button.className = 'keyboard-button';
+    button.className = 'key';
     langOne.className = 'lang-one';
     langTwo.className = 'lang-two not-active';
 
@@ -82,7 +82,6 @@ class Keyboard {
 
     const arrB = arr.map((x) => {
       x.pointer = this.createButton(x);
-      x.pointer.className = 'key';
       return x;
     });
 
