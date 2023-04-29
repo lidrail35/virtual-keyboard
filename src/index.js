@@ -19,6 +19,7 @@ class Keyboard {
   createViewField() {
     this.viewField = document.createElement('textarea');
     this.viewField.className = 'textarea';
+    this.viewField.disabled = true;
     return this.viewField;
   }
 
