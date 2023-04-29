@@ -10,9 +10,10 @@ class Keyboard {
     this.height = height || 25 * 5;
     this.viewField = this.createViewField();
     this.keyBoard = this.createKeyBoard();
-    this.workSpace = this.createWorkSpaсe();
+    this.workSpace = null;
     this.lang = 'en';
     this.keyLines = [];
+    this.addListener();
   }
 
   createViewField() {
@@ -38,6 +39,7 @@ class Keyboard {
 
     button.addEventListener('mousedown', (e) => {
       e.target.closest('.key').classList.toggle('press', true);
+      this.viewField.textContent += btn.en;
     });
     button.addEventListener('mouseup', (e) => {
       e.target.closest('.key').classList.toggle('press', false);
@@ -69,6 +71,20 @@ class Keyboard {
     return this.keyBoard;
   }
 
+  addListener() {
+    document.addEventListener('keydown', (e) => {
+      console.log(`down ${e.key}, ${e.code} ${e.getModifierState}`);
+      const pressedKey = keyData.filter((x) => x.key === e.code.toString());
+      console.log(pressedKey);
+      if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', true);
+    });
+    document.addEventListener('keyup', (e) => {
+      console.log(`up  ${e.key}, ${e.code}`);
+      const pressedKey = keyData.filter((x) => x.key === e.code.toString());
+      if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', false);
+    });
+  }
+
   createWorkSpaсe() {
     this.workSpace = document.createElement('div');
     this.workSpace.className = 'work-space';
@@ -83,4 +99,4 @@ class Keyboard {
 }
 
 const board = new Keyboard();
-// board.createWorkSpaсe();
+board.createWorkSpaсe();
