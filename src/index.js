@@ -28,10 +28,18 @@ class Keyboard {
     return this.viewField;
   }
 
-  writeSymbolToViewField(keyButton) {
+  redrawButton() {
     if (this.altLeft && this.shiftLeft) {
       this.lang = (this.lang === 'en') ? 'ru' : 'en';
+      keyData.forEach((x) => {
+        x.pointer.children[0].classList.toggle('not-active');
+        x.pointer.children[1].classList.toggle('not-active');
+      });
     }
+  }
+
+  writeSymbolToViewField(keyButton) {
+    this.redrawButton();
     // if this.altKey && this.shiftKey
     if (keyButton.includes('Left') || keyButton.includes('Right')) return;
     const pressedKey = keyData.filter((x) => x.key === keyButton);
@@ -48,7 +56,7 @@ class Keyboard {
 
     button.className = 'keyboard-button';
     langOne.className = 'lang-one';
-    langTwo.className = 'lang-two';
+    langTwo.className = 'lang-two not-active';
 
     langOne.textContent = btn.en.toUpperCase();
     langTwo.textContent = btn.ru.toUpperCase();
