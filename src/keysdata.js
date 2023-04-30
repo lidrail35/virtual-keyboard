@@ -39,10 +39,10 @@ const keyData = [
     key: 'Equal', ru: '=', en: '=', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Backspace', ru: 'Backspace', en: 'Backspace', size: 11, status: 1, pointer: null,
+    key: 'Backspace', text: 'Backspace', size: 11, status: 1, pointer: null,
   },
   {
-    key: 'Tab', ru: 'Tab', en: 'Tab', size: 21, status: 1, pointer: null,
+    key: 'Tab', text: 'Tab', size: 21, status: 1, pointer: null,
   },
   {
     key: 'KeyQ', ru: 'й', en: 'q', size: 0, status: 2, pointer: null,
@@ -84,10 +84,10 @@ const keyData = [
     key: 'Backslash', ru: '\\', en: '\\', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Delete', ru: 'Del', en: 'Del', size: 21, status: 1, pointer: null,
+    key: 'Delete', text: 'Del', size: 21, status: 1, pointer: null,
   },
   {
-    key: 'CapsLock', ru: 'CapsLock', en: 'CapsLock', size: 31, status: 1, pointer: null,
+    key: 'CapsLock', text: 'CapsLock', size: 31, status: 1, pointer: null,
   },
   {
     key: 'KeyA', ru: 'й', en: 'a', size: 0, status: 2, pointer: null,
@@ -123,10 +123,10 @@ const keyData = [
     key: 'Quote', ru: 'э', en: '\'', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Enter', ru: 'Enter', en: 'Enter', size: 32, status: 1, pointer: null,
+    key: 'Enter', text: 'Enter', size: 32, status: 1, pointer: null,
   },
   {
-    key: 'ShiftLeft', ru: 'Shift', en: 'Shift', size: 41, status: 1, pointer: null,
+    key: 'ShiftLeft', text: 'Shift', size: 41, status: 1, pointer: null,
   },
   {
     key: 'KeyZ', ru: 'я', en: 'z', size: 0, status: 2, pointer: null,
@@ -159,37 +159,37 @@ const keyData = [
     key: 'Slash', ru: '.', en: '/', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'ArrowUp', ru: '▲', en: '▲', size: 0, status: 2, pointer: null,
+    key: 'ArrowUp', text: '▲', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'ShiftRight', ru: 'Shift', en: 'Shift', size: 42, status: 1, pointer: null,
+    key: 'ShiftRight', text: 'Shift', size: 42, status: 1, pointer: null,
   },
   {
-    key: 'ControlLeft', ru: 'Control', en: 'Control', size: 51, status: 1, pointer: null,
+    key: 'ControlLeft', text: 'Ctrl', size: 51, status: 1, pointer: null,
   },
   {
-    key: 'MetaLeft', ru: 'WIN', en: 'WIN', size: 0, status: 1, pointer: null,
+    key: 'MetaLeft', text: 'WIN', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'AltLeft', ru: 'Alt', en: 'Alt', size: 0, status: 1, pointer: null,
+    key: 'AltLeft', text: 'Alt', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'Space', ru: '', en: '', size: 52, status: 1, pointer: null,
+    key: 'Space', text: '', size: 52, status: 1, pointer: null,
   },
   {
-    key: 'AltRight', ru: 'Alt', en: 'Alt', size: 0, status: 1, pointer: null,
+    key: 'AltRight', text: 'Alt', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'ArrowLeft', ru: '◄', en: '◄', size: 0, status: 1, pointer: null,
+    key: 'ArrowLeft', text: '◄', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'ArrowDown', ru: '▼', en: '▼', size: 0, status: 1, pointer: null,
+    key: 'ArrowDown', text: '▼', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'ArrowRight', ru: '►', en: '►', size: 0, status: 1, pointer: null,
+    key: 'ArrowRight', text: '►', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'ControlRight', ru: 'Ctrl', en: 'Ctrl', size: 2, status: 1, pointer: null,
+    key: 'ControlRight', text: 'Ctrl', size: 51, status: 1, pointer: null,
   },
 ];
 export default keyData;

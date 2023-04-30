@@ -31,7 +31,7 @@ class Keyboard {
   redrawButton() {
     if (this.altLeft && this.shiftLeft) {
       this.lang = (this.lang === 'en') ? 'ru' : 'en';
-      keyData.forEach((x) => {
+      keyData.filter((x) => !Object.prototype.hasOwnProperty.call(x, 'text')).forEach((x) => {
         x.pointer.children[0].classList.toggle('not-active');
         x.pointer.children[1].classList.toggle('not-active');
       });
@@ -55,15 +55,19 @@ class Keyboard {
     const langTwo = document.createElement('span');
 
     button.className = `key size-${btn.size}`;
-    langOne.className = 'lang-one';
-    langTwo.className = 'lang-two not-active';
+    if (Object.prototype.hasOwnProperty.call(btn, 'text')) {
+      button.className = `key single size-${btn.size}`;
+      button.textContent = btn.text;
+    } else {
+      langOne.className = 'lang-one';
+      langTwo.className = 'lang-two not-active';
 
-    langOne.textContent = btn.en.toUpperCase();
-    langTwo.textContent = btn.ru.toUpperCase();
+      langOne.textContent = btn.en.toUpperCase();
+      langTwo.textContent = btn.ru.toUpperCase();
 
-    button.append(langOne);
-    button.append(langTwo);
-
+      button.append(langOne);
+      button.append(langTwo);
+    }
     button.addEventListener('mousedown', (e) => {
       e.target.closest('.key').classList.toggle('press', true);
       this.writeSymbolToViewField(btn.key);
