@@ -41,14 +41,28 @@ class Keyboard {
   }
 
   writeSymbolToViewField(keyButton) {
+    let charToOut;
+    const str = this.viewField.value;
+    const strLenght = this.viewField.value.length;
+    const currStart = this.viewField.selectionStart;
     this.redrawButton();
     // if this.altKey && this.shiftKey
-    if (keyButton.includes('Left') || keyButton.includes('Right')) return;
+    // if (keyButton.includes('Left') || keyButton.includes('Right')) return;
     const pressedKey = keyData.filter((x) => x.key === keyButton);
-    const charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
-      : pressedKey[0][this.lang];
-    // keyData[0]
-    this.viewField.textContent += charToOut;
+    // const charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
+    //      : pressedKey[0][this.lang];
+    if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'en')) {
+      charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
+        : pressedKey[0][this.lang];
+      if (strLenght === currStart) this.viewField.value += charToOut;
+      else {
+        this.viewField.value = str.slice(0, currStart) + charToOut + str.slice(currStart);
+        this.viewField.selectionStart = currStart + 1;
+        this.viewField.selectionEnd = currStart + 1;
+      }
+      // this.viewField.selectionStart += 1;
+      // this.viewField.selectionEnd += 1;
+    }
   }
 
   createButton(btn) {
