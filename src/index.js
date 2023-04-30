@@ -57,6 +57,27 @@ class Keyboard {
       this.viewField.selectionEnd += 1;
       this.viewField.selectionStart += 1;
     }
+    if (pressedKey[0].key === 'Backspace') {
+      if (currStart !== 0) {
+        this.viewField.value = str.slice(0, currStart - 1) + str.slice(currStart);
+        this.viewField.selectionStart = currStart - 1;
+        this.viewField.selectionEnd = currStart - 1;
+      }
+    }
+    if (pressedKey[0].key === 'Delete') {
+      this.viewField.value = str.slice(0, currStart) + str.slice(currStart + 1);
+      this.viewField.selectionStart = currStart;
+      this.viewField.selectionEnd = currStart;
+    }
+    if (pressedKey[0].key === 'Enter') {
+      this.viewField.value = `${str.slice(0, currStart)}\n${str.slice(currStart)}`;
+      this.viewField.selectionStart = currStart + 1;
+      this.viewField.selectionEnd = currStart + 1;
+    }
+    if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'content')) {
+      charToOut = pressedKey[0].content;
+      this.viewField.value += charToOut;
+    }
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'en')) {
       charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
         : pressedKey[0][this.lang];
@@ -66,8 +87,6 @@ class Keyboard {
         this.viewField.selectionStart = currStart + 1;
         this.viewField.selectionEnd = currStart + 1;
       }
-      // this.viewField.selectionStart += 1;
-      // this.viewField.selectionEnd += 1;
     }
   }
 
