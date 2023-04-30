@@ -104,6 +104,10 @@ width: 40px;
   color: white;
 }
 
-.press {
+.press,
+.fix-key {
   background: rgb(100, 70, 70);
+}
+.caps-lock {
+  text-transform: uppercase;
 }
