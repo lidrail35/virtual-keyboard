@@ -23,6 +23,7 @@
 .key-lines {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .key {
