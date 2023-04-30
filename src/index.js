@@ -24,7 +24,9 @@ class Keyboard {
   createViewField() {
     this.viewField = document.createElement('textarea');
     this.viewField.className = 'textarea';
-    this.viewField.disabled = true;
+    // this.viewField.disabled = true;
+    this.viewField.addEventListener('change', () => this.viewField.focus());
+    this.viewField.addEventListener('blur', () => this.viewField.focus());
     return this.viewField;
   }
 
@@ -105,6 +107,7 @@ class Keyboard {
 
   addListener() {
     document.addEventListener('keydown', (e) => {
+      e.preventDefault();
       console.log(`down ${e.key}, ${e.code}, ${e.shiftKey}`);
       const pressedKey = keyData.filter((x) => x.key === e.code.toString());
       if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', true);
@@ -135,6 +138,7 @@ class Keyboard {
     this.workSpace.append(this.keyBoard);
 
     body.append(this.workSpace);
+    this.viewField.focus();
 
     return this.workSpace;
   }
