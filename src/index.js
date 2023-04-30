@@ -54,7 +54,7 @@ class Keyboard {
     const langOne = document.createElement('span');
     const langTwo = document.createElement('span');
 
-    button.className = 'key';
+    button.className = `key size-${btn.size}`;
     langOne.className = 'lang-one';
     langTwo.className = 'lang-two not-active';
 
