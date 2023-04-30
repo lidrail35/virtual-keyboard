@@ -42,7 +42,7 @@ const keyData = [
     key: 'Backspace', text: 'Backspace', size: 11, status: 1, pointer: null,
   },
   {
-    key: 'Tab', text: 'Tab', size: 21, status: 1, pointer: null,
+    key: 'Tab', text: 'Tab', content: '\t', size: 21, status: 1, pointer: null,
   },
   {
     key: 'KeyQ', ru: 'й', en: 'q', size: 0, status: 2, pointer: null,
@@ -159,7 +159,7 @@ const keyData = [
     key: 'Slash', ru: '.', en: '/', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'ArrowUp', text: '▲', size: 0, status: 2, pointer: null,
+    key: 'ArrowUp', text: '▲', content: '▲', size: 0, status: 2, pointer: null,
   },
   {
     key: 'ShiftRight', text: 'Shift', size: 42, status: 1, pointer: null,
@@ -174,7 +174,7 @@ const keyData = [
     key: 'AltLeft', text: 'Alt', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'Space', text: '', size: 52, status: 1, pointer: null,
+    key: 'Space', text: '', content: ' ', size: 52, status: 1, pointer: null,
   },
   {
     key: 'AltRight', text: 'Alt', size: 0, status: 1, pointer: null,
@@ -183,7 +183,7 @@ const keyData = [
     key: 'ArrowLeft', text: '◄', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'ArrowDown', text: '▼', size: 0, status: 1, pointer: null,
+    key: 'ArrowDown', text: '▼', content: '▼', size: 0, status: 1, pointer: null,
   },
   {
     key: 'ArrowRight', text: '►', size: 0, status: 1, pointer: null,
