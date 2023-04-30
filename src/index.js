@@ -49,8 +49,14 @@ class Keyboard {
     // if this.altKey && this.shiftKey
     // if (keyButton.includes('Left') || keyButton.includes('Right')) return;
     const pressedKey = keyData.filter((x) => x.key === keyButton);
-    // const charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
-    //      : pressedKey[0][this.lang];
+    if (pressedKey[0].key === 'ArrowLeft') {
+      this.viewField.selectionStart -= 1;
+      this.viewField.selectionEnd -= 1;
+    }
+    if (pressedKey[0].key === 'ArrowRight') {
+      this.viewField.selectionEnd += 1;
+      this.viewField.selectionStart += 1;
+    }
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'en')) {
       charToOut = this.shift ? pressedKey[0][this.lang].toUpperCase()
         : pressedKey[0][this.lang];
