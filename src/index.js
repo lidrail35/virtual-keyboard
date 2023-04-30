@@ -85,8 +85,9 @@ class Keyboard {
     keyLine.className = 'key-lines';
 
     const arrB = arr.map((x) => {
-      x.pointer = this.createButton(x);
-      return x;
+      const y = x;
+      y.pointer = this.createButton(x);
+      return y;
     });
 
     arrB.map((x) => keyLine.append(x.pointer));
