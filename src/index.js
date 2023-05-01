@@ -35,21 +35,48 @@ class Keyboard {
     if (this.altLeft && this.shiftLeft) {
       this.lang = (this.lang === 'en') ? 'ru' : 'en';
       localStorage.setItem('lang', this.lang);
-      keyData.filter((x) => !Object.prototype.hasOwnProperty.call(x, 'text')).forEach((x) => {
+      keyData.filter((x) => !Object.prototype.hasOwnProperty.call(x, 'text')
+                         && !Object.prototype.hasOwnProperty.call(x, 'base')).forEach((x) => {
         x.pointer.children[0].classList.toggle('not-active');
         x.pointer.children[1].classList.toggle('not-active');
       });
+      return;
     }
+    if (this.alt) return;
     const flg = ((!this.shift && this.CapsLock) || (this.shift && !this.CapsLock));
     keyData
       .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'en')))
       .map((x) => x.pointer.classList.toggle('caps-lock', flg));
+    keyData
+      .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'base')))
+      .map((x) => {
+        const y = x;
+        y.pointer.children[0].textContent = x.shift[this.lang];
+        return y;
+      });
+    keyData
+      .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'base'))).forEach((x) => {
+        x.pointer.children[0].classList.toggle('not-active', !this.shift);
+        x.pointer.children[1].classList.toggle('not-active', this.shift);
+      });
+  }
+
+  writeSymbolToCursorPosition(char) {
+    if (char === undefined) return;
+    const str = this.viewField.value;
+    const strLenght = this.viewField.value.length;
+    const currStart = this.viewField.selectionStart;
+    if (strLenght === currStart) this.viewField.value += char;
+    else {
+      this.viewField.value = str.slice(0, currStart) + char + str.slice(currStart);
+      this.viewField.selectionStart = currStart + 1;
+      this.viewField.selectionEnd = currStart + 1;
+    }
   }
 
   writeSymbolToViewField(keyButton) {
     let charToOut;
     const str = this.viewField.value;
-    const strLenght = this.viewField.value.length;
     const currStart = this.viewField.selectionStart;
 
     // if (keyButton.includes('Left') || keyButton.includes('Right')) return;
@@ -90,17 +117,15 @@ class Keyboard {
       charToOut = pressedKey[0].content;
       this.viewField.value += charToOut;
     }
+    if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'base') && this.shift) {
+      charToOut = pressedKey[0].shift[this.lang];
+    } else charToOut = pressedKey[0].base;
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'en')) {
       charToOut = (!this.shift && this.CapsLock) || (this.shift && !this.CapsLock)
         ? pressedKey[0][this.lang].toUpperCase()
         : pressedKey[0][this.lang];
-      if (strLenght === currStart) this.viewField.value += charToOut;
-      else {
-        this.viewField.value = str.slice(0, currStart) + charToOut + str.slice(currStart);
-        this.viewField.selectionStart = currStart + 1;
-        this.viewField.selectionEnd = currStart + 1;
-      }
     }
+    this.writeSymbolToCursorPosition(charToOut);
   }
 
   createButton(btn) {
@@ -121,8 +146,15 @@ class Keyboard {
         langTwo.className = 'lang-two';
       }
 
-      langOne.textContent = btn.en;
-      langTwo.textContent = btn.ru;
+      if (Object.prototype.hasOwnProperty.call(btn, 'base')) {
+        langOne.className = 'lang-one not-active';
+        langTwo.className = 'lang-two';
+        langOne.textContent = btn.shift[this.lang];
+        langTwo.textContent = btn.base;
+      } else {
+        langOne.textContent = btn.en;
+        langTwo.textContent = btn.ru;
+      }
 
       button.append(langOne);
       button.append(langTwo);
@@ -192,7 +224,10 @@ class Keyboard {
       this.alt = e.altKey;
       this.crtl = e.ctrlKey;
       if (e.code === 'ShiftLeft') this.shiftLeft = false;
-      if (e.code === 'AltLeft') this.altLeft = false;
+      if (e.code === 'AltLeft') {
+        this.altLeft = false;
+        return;
+      }
       this.redrawButton();
     });
   }

@@ -3,40 +3,40 @@ const keyData = [
     key: 'Backquote', ru: 'ё', en: '`', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit1', ru: '1', en: '1', size: 0, status: 2, pointer: null,
+    key: 'Digit1', base: '1', shift: { ru: '!', en: '!' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit2', ru: '2', en: '2', size: 0, status: 2, pointer: null,
+    key: 'Digit2', base: '2', shift: { ru: '"', en: '@' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit3', ru: '3', en: '3', size: 0, status: 2, pointer: null,
+    key: 'Digit3', base: '3', shift: { ru: '№', en: '#' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit4', ru: '4', en: '4', size: 0, status: 2, pointer: null,
+    key: 'Digit4', base: '4', shift: { ru: ';', en: '$' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit5', ru: '5', en: '5', size: 0, status: 2, pointer: null,
+    key: 'Digit5', base: '5', shift: { ru: '%', en: '%' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit6', ru: '6', en: '6', size: 0, status: 2, pointer: null,
+    key: 'Digit6', base: '6', shift: { ru: ':', en: '^' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit7', ru: '7', en: '7', size: 0, status: 2, pointer: null,
+    key: 'Digit7', base: '7', shift: { ru: '?', en: '&' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit8', ru: '8', en: '8', size: 0, status: 2, pointer: null,
+    key: 'Digit8', base: '8', shift: { ru: '*', en: '*' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit9', ru: '9', en: '9', size: 0, status: 2, pointer: null,
+    key: 'Digit9', base: '9', shift: { ru: '(', en: '(' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Digit0', ru: '0', en: '0', size: 0, status: 2, pointer: null,
+    key: 'Digit0', base: '0', shift: { ru: ')', en: ')' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Minus', ru: '-', en: '-', size: 0, status: 2, pointer: null,
+    key: 'Minus', base: '-', shift: { ru: '_', en: '_' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Equal', ru: '=', en: '=', size: 0, status: 2, pointer: null,
+    key: 'Equal', base: '=', shift: { ru: '+', en: '+' }, size: 0, status: 2, pointer: null,
   },
   {
     key: 'Backspace', text: 'Backspace', size: 11, status: 1, pointer: null,
