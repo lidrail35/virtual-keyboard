@@ -135,37 +135,40 @@ class Keyboard {
     const langTwo = document.createElement('span');
 
     button.className = `key size-${btn.size}`;
+
     if (Object.prototype.hasOwnProperty.call(btn, 'text')) {
       button.className = `key single size-${btn.size}`;
       button.textContent = btn.text;
-    } else {
-      if (this.lang === 'en') {
-        langOne.className = 'lang-one';
-        langTwo.className = 'lang-two not-active';
-      } else {
-        langOne.className = 'lang-one not-active';
-        langTwo.className = 'lang-two';
-      }
-
-      if (Object.prototype.hasOwnProperty.call(btn, 'base')) {
-        langOne.className = 'lang-one not-active';
-        langTwo.className = 'lang-two';
-        langOne.textContent = btn.shift[this.lang];
-        langTwo.textContent = btn.base;
-      } else {
-        langOne.textContent = btn.en;
-        langTwo.textContent = btn.ru;
-      }
-
-      button.append(langOne);
-      button.append(langTwo);
     }
+
+    if (Object.prototype.hasOwnProperty.call(btn, 'base')) {
+      langOne.textContent = btn.shift[this.lang];
+      langTwo.textContent = btn.base;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(btn, 'en')) {
+      langOne.textContent = btn.en.little;
+      langTwo.textContent = btn.ru.little;
+    }
+
+    if (this.lang === 'en') {
+      langOne.className = 'lang-one';
+      langTwo.className = 'lang-two not-active';
+    } else {
+      langOne.className = 'lang-one not-active';
+      langTwo.className = 'lang-two';
+    }
+
+    button.append(langOne);
+    button.append(langTwo);
+
     button.addEventListener('mousedown', (e) => {
       e.target.closest('.key').classList.toggle('press', true);
       if ((btn.key === 'ShiftLeft') || (btn.key === 'ShiftRight')) this.shift = true;
       this.redrawButton();
       this.writeSymbolToViewField(btn.key);
     });
+
     button.addEventListener('mouseup', (e) => {
       e.target.closest('.key').classList.toggle('press', false);
       if ((btn.key === 'ShiftLeft') || (btn.key === 'ShiftRight')) this.shift = false;
