@@ -8,7 +8,7 @@ class Keyboard {
   constructor(width, height) {
     this.width = width || 75;
     this.height = height || 25 * 5;
-    this.lang = 'en';
+    this.lang = null;
     this.keyLines = [];
     this.shift = false;
     this.shiftLeft = false;
@@ -34,6 +34,7 @@ class Keyboard {
   redrawButton() {
     if (this.altLeft && this.shiftLeft) {
       this.lang = (this.lang === 'en') ? 'ru' : 'en';
+      localStorage.setItem('lang', this.lang);
       keyData.filter((x) => !Object.prototype.hasOwnProperty.call(x, 'text')).forEach((x) => {
         x.pointer.children[0].classList.toggle('not-active');
         x.pointer.children[1].classList.toggle('not-active');
@@ -112,8 +113,13 @@ class Keyboard {
       button.className = `key single size-${btn.size}`;
       button.textContent = btn.text;
     } else {
-      langOne.className = 'lang-one';
-      langTwo.className = 'lang-two not-active';
+      if (this.lang === 'en') {
+        langOne.className = 'lang-one';
+        langTwo.className = 'lang-two not-active';
+      } else {
+        langOne.className = 'lang-one not-active';
+        langTwo.className = 'lang-two';
+      }
 
       langOne.textContent = btn.en;
       langTwo.textContent = btn.ru;
@@ -153,6 +159,10 @@ class Keyboard {
   }
 
   createKeyBoard() {
+    if (localStorage.getItem('lang') === null) {
+      this.lang = 'en';
+    } else { this.lang = localStorage.getItem('lang'); }
+
     this.keyBoard = document.createElement('div');
     this.keyBoard.className = 'keyboard';
     this.keyBoard.append(this.createKeyLines(keyData));
