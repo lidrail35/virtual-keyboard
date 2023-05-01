@@ -12,7 +12,7 @@
   width: 100%;
   height: 200px;
   resize: none;
-  border: 2px double gray;
+  border: 2px double #7c7c7c;
 }
 
 .keyboard {
@@ -21,8 +21,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: lightgray;
-  border: 2px double gray;
+  background: #d3d3d3;
+  border: 2px double #808080;
 }
 
 .key-lines {
@@ -89,24 +89,24 @@ width: 40px;
 }
 
 .lang-one {
-  color: rgb(0, 0, 0);
+  color: #000000;  
   transition: all 0.3s linear;
 }
 
 .lang-two {
-  color: rgb(0, 0, 0);
+  color: #000000;
   align-self:flex-end;
   transition: all 0.3s linear;
 }
 
 .not-active {
   font-size: 10px;
-  color: white;
+  color: #ffffff;
 }
 
 .press,
 .fix-key {
-  background: rgb(100, 70, 70);
+  background: #644646;
 }
 
 .caps-lock {
