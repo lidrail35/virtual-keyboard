@@ -157,6 +157,13 @@ class Keyboard {
     const langTwo = document.createElement('span');
 
     button.className = `key size-${btn.size}`;
+    if (this.lang === 'en') {
+      langOne.className = 'lang-one';
+      langTwo.className = 'lang-two not-active';
+    } else {
+      langOne.className = 'lang-one not-active';
+      langTwo.className = 'lang-two';
+    }
 
     if (Object.prototype.hasOwnProperty.call(btn, 'text')) {
       button.className = `key single size-${btn.size}`;
@@ -164,6 +171,8 @@ class Keyboard {
     }
 
     if (Object.prototype.hasOwnProperty.call(btn, 'base')) {
+      langOne.className = 'lang-one not-active';
+      langTwo.className = 'lang-two';
       langOne.textContent = btn.shift[this.lang];
       langTwo.textContent = btn.base;
     }
@@ -171,14 +180,6 @@ class Keyboard {
     if (Object.prototype.hasOwnProperty.call(btn, 'en')) {
       langOne.textContent = btn.en.little;
       langTwo.textContent = btn.ru.little;
-    }
-
-    if (this.lang === 'en') {
-      langOne.className = 'lang-one';
-      langTwo.className = 'lang-two not-active';
-    } else {
-      langOne.className = 'lang-one not-active';
-      langTwo.className = 'lang-two';
     }
 
     button.append(langOne);
