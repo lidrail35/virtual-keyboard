@@ -90,31 +90,31 @@ const keyData = [
     key: 'CapsLock', text: 'CapsLock', size: 31, status: 1, pointer: null,
   },
   {
-    key: 'KeyA', ru: 'й', en: 'a', size: 0, status: 2, pointer: null,
+    key: 'KeyA', ru: 'ф', en: 'a', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyS', ru: 'ц', en: 's', size: 0, status: 2, pointer: null,
+    key: 'KeyS', ru: 'ы', en: 's', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyD', ru: 'у', en: 'd', size: 0, status: 2, pointer: null,
+    key: 'KeyD', ru: 'в', en: 'd', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyF', ru: 'к', en: 'f', size: 0, status: 2, pointer: null,
+    key: 'KeyF', ru: 'а', en: 'f', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyG', ru: 'е', en: 'g', size: 0, status: 2, pointer: null,
+    key: 'KeyG', ru: 'п', en: 'g', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyH', ru: 'н', en: 'h', size: 0, status: 2, pointer: null,
+    key: 'KeyH', ru: 'р', en: 'h', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyJ', ru: 'г', en: 'j', size: 0, status: 2, pointer: null,
+    key: 'KeyJ', ru: 'о', en: 'j', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyK', ru: 'ш', en: 'k', size: 0, status: 2, pointer: null,
+    key: 'KeyK', ru: 'л', en: 'k', size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyL', ru: 'щ', en: 'l', size: 0, status: 2, pointer: null,
+    key: 'KeyL', ru: 'д', en: 'l', size: 0, status: 2, pointer: null,
   },
   {
     key: 'Semicolon', ru: 'ж', en: ';', size: 0, status: 2, pointer: null,
