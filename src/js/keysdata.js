@@ -159,7 +159,7 @@ const keyData = [
     key: 'Slash', ru: { little: '.', big: ',' }, en: { little: '/', big: '?' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'ArrowUp', text: '▲', content: '▲', size: 0, status: 2, pointer: null,
+    key: 'ArrowUp', text: '▲', size: 0, status: 2, pointer: null,
   },
   {
     key: 'ShiftRight', text: 'Shift', size: 42, status: 1, pointer: null,
@@ -183,7 +183,7 @@ const keyData = [
     key: 'ArrowLeft', text: '◄', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'ArrowDown', text: '▼', content: '▼', size: 0, status: 1, pointer: null,
+    key: 'ArrowDown', text: '▼', size: 0, status: 1, pointer: null,
   },
   {
     key: 'ArrowRight', text: '►', size: 0, status: 1, pointer: null,

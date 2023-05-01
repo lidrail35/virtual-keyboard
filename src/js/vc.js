@@ -1,5 +1,6 @@
 import keyData from './keysdata';
 
+const { head } = document;
 const { body } = document;
 
 class Keyboard {
@@ -98,6 +99,16 @@ class Keyboard {
     if (pressedKey[0].key === 'ArrowLeft') {
       this.viewField.selectionStart -= 1;
       this.viewField.selectionEnd -= 1;
+    }
+
+    if (pressedKey[0].key === 'ArrowUp') {
+      this.viewField.selectionStart = 0;
+      this.viewField.selectionEnd = 0;
+    }
+
+    if (pressedKey[0].key === 'ArrowDown') {
+      this.viewField.selectionStart = str.length;
+      this.viewField.selectionEnd = str.length;
     }
 
     if (pressedKey[0].key === 'ArrowRight') {
@@ -270,6 +281,11 @@ class Keyboard {
   }
 
   createWorkSpaсe() {
+    const favicon = document.createElement('link');
+    favicon.setAttribute('rel', 'shortcut icon');
+    favicon.setAttribute('href', './assets/favicon.ico');
+    head.append(favicon);
+
     this.workSpace = document.createElement('div');
     this.workSpace.className = 'work-space';
 

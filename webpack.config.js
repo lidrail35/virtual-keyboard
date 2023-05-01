@@ -3,7 +3,7 @@ const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
@@ -32,12 +32,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
-  //    new CopyPlugin({
-  //      patterns: [
-  //        { from: path.resolve(__dirname, 'src', 'assets/data'), to: 'assets/data' },
-  //        { from: path.resolve(__dirname, 'src', 'assets/sounds'), to: 'assets/sounds' }
-  //      ],
-  //    }),
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src', 'assets/'), to: 'assets/' },
+      ],
+    }),
   ],
   module: {
     rules: [
