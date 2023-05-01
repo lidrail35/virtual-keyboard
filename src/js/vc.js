@@ -15,6 +15,9 @@ class Keyboard {
     this.alt = false;
     this.CapsLock = false;
     this.workSpace = null;
+    this.title = document.createElement('h1');
+    this.subtitleOs = document.createElement('p');
+    this.subtitleLayout = document.createElement('p');
     this.viewField = this.createViewField();
     this.keyBoard = this.createKeyBoard();
     this.addListener();
@@ -32,6 +35,7 @@ class Keyboard {
     if (this.altLeft && this.shiftLeft) {
       this.lang = (this.lang === 'en') ? 'ru' : 'en';
       localStorage.setItem('lang', this.lang);
+      this.setContentOnPage(this.lang);
       keyData.filter((x) => !Object.prototype.hasOwnProperty.call(x, 'text')
                          && !Object.prototype.hasOwnProperty.call(x, 'base')).forEach((x) => {
         x.pointer.children[0].classList.toggle('not-active');
@@ -77,6 +81,7 @@ class Keyboard {
     const currStart = this.viewField.selectionStart;
 
     const pressedKey = keyData.filter((x) => x.key === keyButton);
+    if (pressedKey.length === 0) return;
     if (pressedKey[0].key === 'ArrowLeft') {
       this.viewField.selectionStart -= 1;
       this.viewField.selectionEnd -= 1;
@@ -226,6 +231,18 @@ class Keyboard {
     });
   }
 
+  setContentOnPage(lang) {
+    if (lang === 'en') {
+      this.title.textContent = 'Virtual keyboard';
+      this.subtitleOs.textContent = 'The keyboard was created in OS Windows 10';
+      this.subtitleLayout.textContent = 'Switch keyboard layout: Left-Alt + Left-Shift';
+    } else {
+      this.title.textContent = 'Виртуальная клавиатура';
+      this.subtitleOs.textContent = 'Клавиатура создана в ОС Windows 10';
+      this.subtitleLayout.textContent = 'Переключение раскладки на клавиатуре: Left-Alt + Left-Shift';
+    }
+  }
+
   createWorkSpaсe() {
     this.workSpace = document.createElement('div');
     this.workSpace.className = 'work-space';
@@ -233,7 +250,15 @@ class Keyboard {
     this.workSpace.append(this.viewField);
     this.workSpace.append(this.keyBoard);
 
+    this.title.className = 'title-header';
+    this.subtitleOs.className = 'subtitle-os';
+    this.subtitleLayout.className = 'subtitle-layout';
+    this.setContentOnPage(this.lang);
+
+    body.append(this.title);
     body.append(this.workSpace);
+    body.append(this.subtitleOs);
+    body.append(this.subtitleLayout);
     this.viewField.focus();
 
     return this.workSpace;
