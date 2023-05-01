@@ -31,7 +31,7 @@ class Keyboard {
     return this.viewField;
   }
 
-  redrawButton() {
+  changeKeyBoardLayout() {
     if (this.altLeft && this.shiftLeft) {
       this.lang = (this.lang === 'en') ? 'ru' : 'en';
       localStorage.setItem('lang', this.lang);
@@ -41,24 +41,36 @@ class Keyboard {
         x.pointer.children[0].classList.toggle('not-active');
         x.pointer.children[1].classList.toggle('not-active');
       });
-      return;
     }
+  }
+
+  redrawButton() {
+    this.changeKeyBoardLayout();
     if (this.alt) return;
+
     const flg = ((!this.shift && this.CapsLock) || (this.shift && !this.CapsLock));
+
     keyData
       .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'en')))
-      .map((x) => x.pointer.classList.toggle('caps-lock', flg));
+      .map((x) => {
+        const y = x;
+        if (flg) {
+          y.pointer.children[0].textContent = x.en.big;
+          y.pointer.children[1].textContent = x.ru.big;
+        } else {
+          y.pointer.children[0].textContent = x.en.little;
+          y.pointer.children[1].textContent = x.ru.little;
+        }
+        return y;
+      });
     keyData
       .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'base')))
       .map((x) => {
         const y = x;
         y.pointer.children[0].textContent = x.shift[this.lang];
+        y.pointer.children[0].classList.toggle('not-active', !this.shift);
+        y.pointer.children[1].classList.toggle('not-active', this.shift);
         return y;
-      });
-    keyData
-      .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'base'))).forEach((x) => {
-        x.pointer.children[0].classList.toggle('not-active', !this.shift);
-        x.pointer.children[1].classList.toggle('not-active', this.shift);
       });
   }
 
@@ -82,14 +94,17 @@ class Keyboard {
 
     const pressedKey = keyData.filter((x) => x.key === keyButton);
     if (pressedKey.length === 0) return;
+
     if (pressedKey[0].key === 'ArrowLeft') {
       this.viewField.selectionStart -= 1;
       this.viewField.selectionEnd -= 1;
     }
+
     if (pressedKey[0].key === 'ArrowRight') {
       this.viewField.selectionEnd += 1;
       this.viewField.selectionStart += 1;
     }
+
     if (pressedKey[0].key === 'Backspace') {
       if (currStart !== 0) {
         this.viewField.value = str.slice(0, currStart - 1) + str.slice(currStart);
@@ -97,16 +112,19 @@ class Keyboard {
         this.viewField.selectionEnd = currStart - 1;
       }
     }
+
     if (pressedKey[0].key === 'Delete') {
       this.viewField.value = str.slice(0, currStart) + str.slice(currStart + 1);
       this.viewField.selectionStart = currStart;
       this.viewField.selectionEnd = currStart;
     }
+
     if (pressedKey[0].key === 'Enter') {
       this.viewField.value = `${str.slice(0, currStart)}\n${str.slice(currStart)}`;
       this.viewField.selectionStart = currStart + 1;
       this.viewField.selectionEnd = currStart + 1;
     }
+
     if (pressedKey[0].key === 'CapsLock') {
       this.CapsLock = !this.CapsLock;
       keyData.find((x) => x.key === 'CapsLock').pointer.classList.toggle('fix-key', this.CapsLock);
@@ -114,18 +132,22 @@ class Keyboard {
         .filter((x) => (Object.prototype.hasOwnProperty.call(x, 'en')))
         .map((x) => x.pointer.classList.toggle('caps-lock'));
     }
+
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'content')) {
       charToOut = pressedKey[0].content;
       this.viewField.value += charToOut;
     }
+
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'base') && this.shift) {
       charToOut = pressedKey[0].shift[this.lang];
     } else charToOut = pressedKey[0].base;
+
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'en')) {
       charToOut = (!this.shift && this.CapsLock) || (this.shift && !this.CapsLock)
-        ? pressedKey[0][this.lang].toUpperCase()
-        : pressedKey[0][this.lang];
+        ? pressedKey[0][this.lang].big
+        : pressedKey[0][this.lang].little;
     }
+
     this.writeSymbolToCursorPosition(charToOut);
   }
 
