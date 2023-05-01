@@ -1,6 +1,6 @@
 const keyData = [
   {
-    key: 'Backquote', ru: 'ё', en: '`', size: 0, status: 2, pointer: null,
+    key: 'Backquote', ru: { little: 'ё', big: 'Ё' }, en: { little: '`', big: '~' }, size: 0, status: 2, pointer: null,
   },
   {
     key: 'Digit1', base: '1', shift: { ru: '!', en: '!' }, size: 0, status: 2, pointer: null,
@@ -45,43 +45,43 @@ const keyData = [
     key: 'Tab', text: 'Tab', content: '\t', size: 21, status: 1, pointer: null,
   },
   {
-    key: 'KeyQ', ru: 'й', en: 'q', size: 0, status: 2, pointer: null,
+    key: 'KeyQ', ru: { little: 'й', big: 'Й' }, en: { little: 'q', big: 'Q' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyW', ru: 'ц', en: 'w', size: 0, status: 2, pointer: null,
+    key: 'KeyW', ru: { little: 'ц', big: 'Ц' }, en: { little: 'w', big: 'W' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyE', ru: 'у', en: 'e', size: 0, status: 2, pointer: null,
+    key: 'KeyE', ru: { little: 'у', big: 'У' }, en: { little: 'e', big: 'E' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyR', ru: 'к', en: 'r', size: 0, status: 2, pointer: null,
+    key: 'KeyR', ru: { little: 'к', big: 'К' }, en: { little: 'r', big: 'R' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyT', ru: 'е', en: 't', size: 0, status: 2, pointer: null,
+    key: 'KeyT', ru: { little: 'е', big: 'Е' }, en: { little: 't', big: 'T' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyY', ru: 'н', en: 'y', size: 0, status: 2, pointer: null,
+    key: 'KeyY', ru: { little: 'н', big: 'Н' }, en: { little: 'y', big: 'Y' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyU', ru: 'г', en: 'u', size: 0, status: 2, pointer: null,
+    key: 'KeyU', ru: { little: 'г', big: 'Г' }, en: { little: 'u', big: 'U' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyI', ru: 'ш', en: 'i', size: 0, status: 2, pointer: null,
+    key: 'KeyI', ru: { little: 'ш', big: 'Ш' }, en: { little: 'i', big: 'I' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyO', ru: 'щ', en: 'o', size: 0, status: 2, pointer: null,
+    key: 'KeyO', ru: { little: 'щ', big: 'Щ' }, en: { little: 'o', big: 'O' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyP', ru: 'з', en: 'p', size: 0, status: 2, pointer: null,
+    key: 'KeyP', ru: { little: 'з', big: 'З' }, en: { little: 'p', big: 'P' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'BracketLeft', ru: 'х', en: '[', size: 0, status: 2, pointer: null,
+    key: 'BracketLeft', ru: { little: 'х', big: 'Х' }, en: { little: '[', big: '{' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'BracketRight', ru: 'ъ', en: ']', size: 0, status: 2, pointer: null,
+    key: 'BracketRight', ru: { little: 'ъ', big: 'Ъ' }, en: { little: ']', big: '}' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Backslash', ru: '\\', en: '\\', size: 0, status: 2, pointer: null,
+    key: 'Backslash', ru: { little: '\\', big: '/' }, en: { little: '\\', big: '|' }, size: 0, status: 2, pointer: null,
   },
   {
     key: 'Delete', text: 'Del', size: 21, status: 1, pointer: null,
@@ -90,37 +90,37 @@ const keyData = [
     key: 'CapsLock', text: 'CapsLock', size: 31, status: 1, pointer: null,
   },
   {
-    key: 'KeyA', ru: 'ф', en: 'a', size: 0, status: 2, pointer: null,
+    key: 'KeyA', ru: { little: 'ф', big: 'Ф' }, en: { little: 'a', big: 'A' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyS', ru: 'ы', en: 's', size: 0, status: 2, pointer: null,
+    key: 'KeyS', ru: { little: 'ы', big: 'Ы' }, en: { little: 's', big: 'S' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyD', ru: 'в', en: 'd', size: 0, status: 2, pointer: null,
+    key: 'KeyD', ru: { little: 'в', big: 'В' }, en: { little: 'd', big: 'D' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyF', ru: 'а', en: 'f', size: 0, status: 2, pointer: null,
+    key: 'KeyF', ru: { little: 'а', big: 'А' }, en: { little: 'f', big: 'F' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyG', ru: 'п', en: 'g', size: 0, status: 2, pointer: null,
+    key: 'KeyG', ru: { little: 'п', big: 'П' }, en: { little: 'g', big: 'G' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyH', ru: 'р', en: 'h', size: 0, status: 2, pointer: null,
+    key: 'KeyH', ru: { little: 'р', big: 'Р' }, en: { little: 'h', big: 'H' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyJ', ru: 'о', en: 'j', size: 0, status: 2, pointer: null,
+    key: 'KeyJ', ru: { little: 'о', big: 'О' }, en: { little: 'j', big: 'J' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyK', ru: 'л', en: 'k', size: 0, status: 2, pointer: null,
+    key: 'KeyK', ru: { little: 'л', big: 'Л' }, en: { little: 'k', big: 'K' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyL', ru: 'д', en: 'l', size: 0, status: 2, pointer: null,
+    key: 'KeyL', ru: { little: 'д', big: 'Д' }, en: { little: 'l', big: 'L' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Semicolon', ru: 'ж', en: ';', size: 0, status: 2, pointer: null,
+    key: 'Semicolon', ru: { little: 'ж', big: 'Ж' }, en: { little: ';', big: ':' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Quote', ru: 'э', en: '\'', size: 0, status: 2, pointer: null,
+    key: 'Quote', ru: { little: 'э', big: 'Э' }, en: { little: '\'', big: '"' }, size: 0, status: 2, pointer: null,
   },
   {
     key: 'Enter', text: 'Enter', size: 32, status: 1, pointer: null,
@@ -129,34 +129,34 @@ const keyData = [
     key: 'ShiftLeft', text: 'Shift', size: 41, status: 1, pointer: null,
   },
   {
-    key: 'KeyZ', ru: 'я', en: 'z', size: 0, status: 2, pointer: null,
+    key: 'KeyZ', ru: { little: 'я', big: 'Я' }, en: { little: 'z', big: 'Z' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyX', ru: 'ч', en: 'x', size: 0, status: 2, pointer: null,
+    key: 'KeyX', ru: { little: 'ч', big: 'Ч' }, en: { little: 'x', big: 'X' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyC', ru: 'с', en: 'c', size: 0, status: 2, pointer: null,
+    key: 'KeyC', ru: { little: 'с', big: 'С' }, en: { little: 'c', big: 'C' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyV', ru: 'м', en: 'v', size: 0, status: 2, pointer: null,
+    key: 'KeyV', ru: { little: 'м', big: 'М' }, en: { little: 'v', big: 'V' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyB', ru: 'и', en: 'b', size: 0, status: 2, pointer: null,
+    key: 'KeyB', ru: { little: 'и', big: 'И' }, en: { little: 'b', big: 'B' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyN', ru: 'т', en: 'n', size: 0, status: 2, pointer: null,
+    key: 'KeyN', ru: { little: 'т', big: 'Т' }, en: { little: 'n', big: 'N' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'KeyM', ru: 'ь', en: 'm', size: 0, status: 2, pointer: null,
+    key: 'KeyM', ru: { little: 'ь', big: 'Ь' }, en: { little: 'm', big: 'M' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Comma', ru: 'б', en: ',', size: 0, status: 2, pointer: null,
+    key: 'Comma', ru: { little: 'б', big: 'Б' }, en: { little: ',', big: '<' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Period', ru: 'ю', en: '.', size: 0, status: 2, pointer: null,
+    key: 'Period', ru: { little: 'ю', big: 'Ю' }, en: { little: '.', big: '>' }, size: 0, status: 2, pointer: null,
   },
   {
-    key: 'Slash', ru: '.', en: '/', size: 0, status: 2, pointer: null,
+    key: 'Slash', ru: { little: '.', big: ',' }, en: { little: '/', big: '?' }, size: 0, status: 2, pointer: null,
   },
   {
     key: 'ArrowUp', text: '▲', content: '▲', size: 0, status: 2, pointer: null,
@@ -174,7 +174,7 @@ const keyData = [
     key: 'AltLeft', text: 'Alt', size: 0, status: 1, pointer: null,
   },
   {
-    key: 'Space', text: '', content: ' ', size: 52, status: 1, pointer: null,
+    key: 'Space', ru: { little: ' ', big: ' ' }, en: { little: ' ', big: ' ' }, size: 52, status: 1, pointer: null,
   },
   {
     key: 'AltRight', text: 'Alt', size: 0, status: 1, pointer: null,
