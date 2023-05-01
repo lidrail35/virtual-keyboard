@@ -25,7 +25,6 @@ class Keyboard {
   createViewField() {
     this.viewField = document.createElement('textarea');
     this.viewField.className = 'textarea';
-    // this.viewField.disabled = true;
     this.viewField.addEventListener('change', () => this.viewField.focus());
     this.viewField.addEventListener('blur', () => this.viewField.focus());
     return this.viewField;
@@ -79,7 +78,6 @@ class Keyboard {
     const str = this.viewField.value;
     const currStart = this.viewField.selectionStart;
 
-    // if (keyButton.includes('Left') || keyButton.includes('Right')) return;
     const pressedKey = keyData.filter((x) => x.key === keyButton);
     if (pressedKey[0].key === 'ArrowLeft') {
       this.viewField.selectionStart -= 1;
@@ -164,7 +162,6 @@ class Keyboard {
       if ((btn.key === 'ShiftLeft') || (btn.key === 'ShiftRight')) this.shift = true;
       this.redrawButton();
       this.writeSymbolToViewField(btn.key);
-      // this.viewField.textContent += btn.en;
     });
     button.addEventListener('mouseup', (e) => {
       e.target.closest('.key').classList.toggle('press', false);
@@ -206,7 +203,6 @@ class Keyboard {
     document.addEventListener('keydown', (e) => {
       e.preventDefault();
       if ((e.code === 'ShiftLeft') && e.repeat) return;
-      console.log(`down ${e.key}, ${e.code}, ${e.shiftKey}`);
       const pressedKey = keyData.filter((x) => x.key === e.code.toString());
       if (pressedKey.length !== 0) pressedKey[0].pointer.classList.toggle('press', true);
       this.shift = e.shiftKey;
