@@ -145,8 +145,9 @@ class Keyboard {
     }
 
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'content')) {
-      charToOut = pressedKey[0].content;
-      this.viewField.value += charToOut;
+      this.viewField.value = `${str.slice(0, currStart)}\t${str.slice(currStart)}`;
+      this.viewField.selectionStart = currStart + 1;
+      this.viewField.selectionEnd = currStart + 1;
     }
 
     if (Object.prototype.hasOwnProperty.call(pressedKey[0], 'base') && this.shift) {

@@ -55,7 +55,7 @@ module.exports = {
         test: /\.(woff|eot|ttf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[name][ext]',
+          filename: './assets/font/[name][ext]',
         },
       },
     ],
