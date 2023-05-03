@@ -68,6 +68,10 @@
   cursor: pointer;
 }
 
+.key:hover {
+  background: #a77979;
+}
+
 .single {
   justify-content: center;
   align-items: center;
@@ -127,7 +131,8 @@ width: 40px;
 }
 
 .press,
-.fix-key {
+.fix-key,
+.key:active {
   background: #644646;
 }
 
